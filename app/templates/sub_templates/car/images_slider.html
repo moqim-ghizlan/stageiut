@@ -1,0 +1,15 @@
+{% set curCarId = car.id | string() %}
+<div class="images-slider">
+    <div class="images-slider__main">
+        <div class="images-slider__main__image">
+            <img class="images-slider__main__image__img" src="{{ car.images[0].url }}" alt="image number {{car.images[0].id}}">
+        </div>
+        <div class="images-slider__main__slider">
+            {% for image in car.images %}
+                <div class="images-slider__main__slider__image">
+                    <img class="images-slider__main__slider__image__img" src="{{ image.url }}" alt="image number {{car.images[0].id}}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

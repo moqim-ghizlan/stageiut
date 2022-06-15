@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='images/logo.png') }}">
+    {% block links %}
+        {% include "templates_assets/links.html" %}
+    {% endblock %}
+    <title>{% block tittre %}{% endblock %}</title>
+</head>
+<body>
+
+    {% block intro_header %}
+        {% include "sub_templates/intro_header.html" %}
+    {% endblock %}
+
+
+    {% block header %}
+    {% endblock %}
+    
+    {% with messages = get_flashed_messages(with_categories=false) %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="toast" id="myToast" role="alert" aria-live="assertive" aria-atomic="false"  data-delay="10000">
+                <div class="toast-header p-5">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="rounded me-2" style="height: 40px; width: 40px; object-fit: contain;" alt="logo">
+                    <strong class="me-auto pr-5">My Autolive</strong><br>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-bold m-2" style="text-align: center;">{{ message }}</div>
+            </div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function(){
+                    var element = document.getElementById("myToast");
+                    var myToast = new bootstrap.Toast(element);
+                    myToast.show();
+                    });
+                    </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block main %}
+    <main>
+        
+
+    </main>
+    {% endblock %}
+    
+
+    {% block footer %}
+        {% include "sub_templates/footer.html" %}
+    {% endblock %}
+
+
+    {% block script %}
+    {% include "templates_assets/scripts.html" %}
+    <script>
+        $(document).ready(function(){
+            $('.btn-close').click(function(){
+                $('.toast').toast('show');
+            });
+        });
+    </script>
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+    {% endblock %}
+    
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block links %}
+    {{ super() }}
+{% endblock %}
+
+{% block tittre %}
+    My Autolive
+{% endblock %}
+
+
+
+
+{% block header %}
+{% include "sub_templates/main_header_v2.html" %}
+{% endblock %}
+
+
+
+{% block main %}    
+    {% include "sub_templates/main_page_v1.html" %}
+{% endblock %}
+
+
+{% block script %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='script/rechercher.js') }}"></script>
+    <script>
+    
+    </script>
+{% endblock %}

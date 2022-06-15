@@ -1,0 +1,25 @@
+
+def get_data():
+    return {
+        'Audi': ['100', '200', '80'],
+        'BMW': ['316', '318', '320', '323', '324'],
+        'Citroen': ['2cv', 'Ax', 'Axel', 'Berlingo'],
+        'Fiat': ['124', '124 Spider'],
+        'Ford': ['Focus', 'Fiesta', 'Mondeo', 'Mustang'],
+        'Honda': ['Civic', 'CR-V', 'Fit', 'Jazz'],
+        'Hyundai': ['Accent', 'Elantra', 'i10', 'i20'],
+        'Kia': ['Cadenza', 'Ceed', 'Cerato', 'Picanto'],
+        'Mercedes': ['A-Class', 'B-Class', 'C-Class', 'E-Class'],
+        'Mitsubishi': ['Eclipse', 'L200', 'Lancer', 'Outlander'],
+        'Nissan': ['Almera', 'Almera Tino', 'March', 'Micra'],
+        'Opel': ['Astra', 'Corsa', 'Insignia', 'Omega'],
+        'Peugeot': ['106', '207', '3008', '301'],
+        'Renault': ['Clio', 'Megane', 'Scenic', 'Symbol'],
+        'Seat': ['Ibiza', 'Leon', 'Toledo', 'Toledo Sport'],
+        'Skoda': ['Fabia', 'Octavia', 'Rapid', 'Superb'],
+        'Subaru': ['BRZ', 'Forester', 'Impreza', 'Legacy'],
+        'Suzuki': ['Grand Vitara', 'Jimny', 'Swift', 'Vitara'],
+        'Toyota': ['Auris', 'Avensis', 'Corolla', 'Land Cruiser'],
+        'Volkswagen': ['Beetle', 'Golf', 'Jetta', 'Passat'],
+        'Volvo': ['C30', 'S40', 'S60', 'S80'],
+        }

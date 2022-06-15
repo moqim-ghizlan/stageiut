@@ -1,0 +1,29 @@
+<div class="add-admin">
+    <div class="add-admin__container">
+        <div class="add-admin__container--title">
+            <h1>Ajouter un administrateur</h1>
+        </div>
+        <div class="add-admin__container--form">
+            <form class="add-admin__container--form--form" method="POST">
+                <div class="add-admin__container--form--form--input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email" value="{{ return_data['email'] }}" required>
+                </div>
+                <div class="add-admin__container--form--form--input--email">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                </div>
+                <div class="add-admin__container--form--form--input--password">
+                    <label for="password_confirm">Confirmation du mot de passe</label>
+                    <input type="password" name="password_confirm" id="password_confirm" placeholder="Confirmation du mot de passe" required>
+                </div>
+                <div class="add-admin__container--form--form--output">
+                    <span class="error">{{ error }}</span>
+                </div>
+                <div class="add-admin__container--form--form--input--done">
+                    <input type="submit" value="Confirmer" id="confirmer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

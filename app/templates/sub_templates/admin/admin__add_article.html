@@ -1,0 +1,121 @@
+<div class="add_article">
+    <div class="add_article_top"><h2>Ajouter un nouveau aticle</h2></div>
+    <div class="add_article_center">
+        <form method="POST" class="add_article_forme" enctype="multipart/form-data">
+            <div class="add_article_form_left">
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="marque">Choisissez la marque</label>
+                        <select class="add_article_container_form_col_row_marque" id="marque" name="select_marques"></select>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="modele">Choisissez la modele</label>
+                        <select id="modeles" name="select_modeles"></select>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="annee">Année de fabrication</label>
+                        <input type="number" name="annee" id="annee" name="annee" value="2020">
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="Kilometrage">Kilométrage</label>
+                        <input type="number" name="Kilometrage" id="Kilometrage" name="Kilometrage" value="100">
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="puissance">Puissance</label>
+                        <input type="number" name="puissance" id="puissance" name="puissance" value="50">
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="puissance_fascals">Puissance fascals</label>
+                        <input type="number" name="puissance_fascals" id="puissance_fascals" name="puissance_fascals" value="5">
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="nb-portes">Nombre de portes</label>
+                        <select class="add_article_container_form_col_row_select" id="nb-portes" name="select_nbportes">
+                            <option class="add_article_container_form_col_row_select_option option" value="3">3 portes</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="5">5 portes</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="autre">Autre</option>
+                        </select>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="nb-places">Nombre de places</label>
+                        <select class="add_article_container_form_col_row_select" id="nb-places" name="select_nbplaces">
+                            <option class="add_article_container_form_col_row_select_option option" value="2">2 places</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="4">4 places</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="5">5 places</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="7">7 places</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="carburants">Carburants</label>
+                        <select class="add_article_container_form_col_row_select" id="carburants" name="select_carburants">
+                            <option class="add_article_container_form_col_row_select_option option" value="Essence">Essence</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="Disel">Disel</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="Hybride">Hybride</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="Electrique">Electrique</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="GPL">GPL</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="Autre">Autre</option>
+                        </select>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="boite-de-vitesse">Boîte de vitesse</label>
+                        <select class="add_article_container_form_col_row_select" id="boite-de-vitesse" name="select_boite-de-vitesse">
+                            <option class="add_article_container_form_col_row_select_option option" value="Manuelle">Manuelle</option>
+                            <option class="add_article_container_form_col_row_select_option option" value="Automatique">Automatique</option>
+                        </select>
+                    </div>
+                </div>
+
+                
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child description">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section prix">
+                    <div class="add_article_form_left_section_child prix">
+                        <label for="prix">Prix</label>
+                        <input type="number" name="prix" id="prix" name="prix">
+                    </div>
+                </div>
+            </div>
+
+            <div class="add_article_form_right">
+                <div class="add_article_form_right_uploadImage">
+                    <!-- <i class="bi bi-cloud-upload-fill"></i> -->
+                    <label for="imagesToUpload" class="add_article_form_right_uploadImage_label"><i class="bi bi-cloud-upload-fill"></i>
+                        <input type="file" id="imagesToUpload" class="add_article_form_right_uploadImage__images" name="imagesToUpload" multiple value="" onChange="preview()">
+                    </label>
+                </div>
+                <div class="add_article_form_right_nbImages">
+                    <h5 id="addArticleFormRightNbImagesText">Aujoutez des images avec votre annonce</h5>
+                </div>
+                <div class="add_article_form_right_reviewImages" id="imagesPreview">
+                </div>
+                <div class="add_article_form_action">
+                    <input type="submit" value="Confirmer">
+                    <a href="{{ url_for('index') }}">Annuler</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

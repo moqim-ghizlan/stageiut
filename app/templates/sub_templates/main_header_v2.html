@@ -1,0 +1,176 @@
+<div class="topnav" id="myTopnav">
+    <a href="{{ url_for('index') }}" class="active">Accueil</a>
+    <a href="#" onclick="showHideOptionDeRechercheDiv()">Options de recherche</a>
+    <a href="{{ url_for('get_list_marques') }}" class="dropbtn">Les marques</a>
+    <a href="#" data-toggle="modal" data-target="#exampleModalLong">Contactes</a>
+    <a href="#about">Société</a>
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('add__', gole='article') }}">Ajouter un article</a>
+        <a href="{{ url_for('add__', gole='admin') }}">Ajouter un administrateur</a>
+        <a href="{{ url_for('logout') }}">Déconnexion</a>
+    {% endif %}
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+
+<script>
+
+</script>
+
+
+<ul class="searchbar" id="showHideOptionDeRechercheDiv">    
+    <form class="searchbar-form" method="POST" action="{{ url_for('outpui_searchbar')}}">
+        <div class="searchbar-form__option">
+
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row__marque_modele">
+                    <label>Marques et Modeles</label>
+                    <select class="searchbar-form__option__row__marque" id="searchbar-form__option__row__marque" name="select_marques"></select>
+                    <select class="searchbar-form__option__row__modele" id="searchbar-form__option__row__modeles" name="select_modeles"></select>
+                </div>
+            </div>
+
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row">
+                    <div class="searchbar-form__option__col__row__year">
+                        <label for="year-min">Années</label>
+                        <input type="number" name="year-min" id="year-min" value="1990">
+                        <input type="number" name="year-max" id="year-max" value="2022">
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row">
+                    <div class="searchbar-form__option__col__row__kilometrage">
+                        <label for="kilometrage-min">Kilometrage (EN 1000 KM)</label>
+                        <input type="number" name="kilometrage-min" id="kilometrage-min" value="50">
+                        <input type="number" name="kilometrage-max" id="kilometrage-max" value="300">
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row">
+                    <div class="searchbar-form__option__col__row__puissance">
+                        <label for="nbplace-min">Puissance</label>
+                        <input type="number" name="puissance-min" id="nbplace-min" value="80">
+                        <input type="number" name="puissance-max" id="nbplace-max" value="400">
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row">
+                    <div class="searchbar-form__option__col__row__nb-portes">
+                        <label for="nb-portes">Nombre de portes</label>
+                        <select class="searchbar-form__option__col__row__nb-portes__select" name="select_nbportes">
+                            <option class="searchbar-form__option__col__row__nb-portes__select option" id="nb-portes" value="all">Tout les choix</option>
+                            <option class="searchbar-form__option__col__row__nb-portes__select option" value="3">3 portes</option>
+                            <option class="searchbar-form__option__col__row__nb-portes__select option" value="5">5 portes</option>
+                            <option class="searchbar-form__option__col__row__nb-portes__select option" value="autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row">
+                    <div class="searchbar-form__option__col__row__nb-place">
+                        <label for="nb-places">Nombre de places</label>
+                        <select class="searchbar-form__option__col__row__nb-places__select" name="select_nbplaces">
+                            <option class="searchbar-form__option__col__row__nb-places__select option" id="nb-places" value="all">Tout les choix</option>
+                            <option class="searchbar-form__option__col__row__nb-places__select option" value="2">2 places</option>
+                            <option class="searchbar-form__option__col__row__nb-places__select option" value="4">4 places</option>
+                            <option class="searchbar-form__option__col__row__nb-places__select option" value="5">5 places</option>
+                            <option class="searchbar-form__option__col__row__nb-places__select option" value="7">7 places</option>
+                            <option class="searchbar-form__option__col__row__nb-places__select option" value="autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row">
+                    <div class="searchbar-form__option__col__row__carburant">
+                        <label for="carburants">Carburants</label>
+                        <select class="searchbar-form__option__col__row__carburant__select" name="select_carburants">
+                            <option class="searchbar-form__option__col__row__carburant__select option" id="carburants" value="all">Tout les type</option>
+                            <option class="searchbar-form__option__col__row__carburant__select option" value="Essence">Essence</option>
+                            <option class="searchbar-form__option__col__row__carburant__select option" value="Disel">Disel</option>
+                            <option class="searchbar-form__option__col__row__carburant__select option" value="Hybride">Hybride</option>
+                            <option class="searchbar-form__option__col__row__carburant__select option" value="Electrique">Electrique</option>
+                            <option class="searchbar-form__option__col__row__carburant__select option" value="GPL">GPL</option>
+                            <option class="searchbar-form__option__col__row__carburant__select option" value="Autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-form__option__col">
+                <div class="searchbar-form__option__col__row">
+                    <div class="searchbar-form__option__col__row__boit-vitesse">
+                        <label for="boite-vitesse">Boîte de votesse</label>
+                        <select class="searchbar-form__option__col__row__boit-vitesse__select" name="select_boitesvitesse">
+                            <option class="searchbar-form__option__col__row__boit-vitesse__select option" id="boite-vitesse" value="all">Tout les types</option>
+                            <option class="searchbar-form__option__col__row__boit-vitesse__select option" value="Manuelle">Manuelle</option>
+                            <option class="searchbar-form__option__col__row__boit-vitesse__select option" value="Automatique">Automatique</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="searchbar-form__option__col rpmc">
+            <input type="text" class="searchbar-form__search__inputs__input keyword" id="form__input" name="form__input" placeholder="Rechercher par un mot clé">
+            <input type="submit" class="searchbar-form__btn" value="Rechercher">
+        </div>
+    </form>
+</ul>
+</nav>
+
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Contectez-nous par télephone ou par mail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% if current_user.is_authenticated %}
+        <form method="POST" action="{{ url_for('edit_contact') }}">
+            <div class="modal-body">
+                <div class="contacte__body__tele">
+                    <div class="contacte__body__tele__icon"><i class="bi bi-telephone-forward"></i></div>
+                    <input type="text" class="contacte__body__tele__numero" name="numero" id="numero" value="{{contactes.telephone}}">
+                </div>
+                <div class="contacte__body__email">
+                    <div class="contacte__body__email__icon"><i class="bi bi-chat-left-dots"></i></div>
+                    <input type="text" class="contacte__body__email__email" name="email" id="email" value="{{contactes.email}}" >
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary">Modifier</button>
+            </div>
+        </form>
+        {% else %}
+        <div class="modal-body">
+            <div class="contacte__body__tele">
+                <div class="contacte__body__tele__icon"><i class="bi bi-telephone-forward"></i></div>
+                <div class="contacte__body__tele__numero"><p>{{set_format_tele(contactes.telephone)}}</p></div>
+            </div>
+            <div class="contacte__body__email">
+                <div class="contacte__body__email__icon"><i class="bi bi-chat-left-dots"></i></div>
+                <div class="contacte__body__email__email"><p>{{ contactes.email }}</p></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <style>
+  
+
+  </style>

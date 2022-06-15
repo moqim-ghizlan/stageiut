@@ -1,0 +1,83 @@
+<div class="modal fade" id="exampleModal{{car.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{car.id}}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel{{car.id}}">Suppression d'un annonce</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Etes-vous sûr de vouloir supprimer cet annonce ?<br>Les annonces supprimés ne peuvent pas être récupérés.
+            </div>
+            <div class="modal-footer">
+                <a href="{{ url_for('delete_car', car_id = car.id) }}"><button type="button" class="btn btn-primary">Supprimer</button></a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container images-slider__rep">
+    <div class="images-slider__rep__infos">
+        <div class="images-slider__rep__infos__tittre">
+            <p>{{ car.marque }} {{ car.modele }}</p>
+        </div>
+        <div class="images-slider__rep__infos__cara">
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Marque : </p>
+                <p>{{ get_marque_by_id(car.id) }}</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Modèle :</p>
+                <p>{{ car.modele }}</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Nombre de portes :</p>
+                <p>{{ car.nb_portes }} Portes</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Nombre de places :</p>
+                <p>{{ car.nb_places }} Places</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Kilométrage :</p>
+                <p>{{ car.kilometrage }}</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Couleur :</p>
+                <p>{{ make_first_leter_up(car.couleur) }}</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Carburant :</p>
+                <p>{{ make_first_leter_up(car.carburant) }}</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Puissance :</p>
+                <p>{{ car.puissance }} chevaux</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Puissance fiscale :</p>
+                <p>{{ car.puissance_fiscale }} chevaux</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Boîte de vitesse :</p>
+                <p>{{ make_first_leter_up(car.boite_vitesse) }}</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam">
+                <p>Prix :</p>
+                <p>{{ car.prix }} €</p>
+            </div>
+            <div class="images-slider__rep__infos__cara__iteam description">
+                <p>Description:</p>
+                <p>{{ car.description }}</p>
+            </div>
+        </div>
+    </div>
+    {% if current_user.is_authenticated %}
+    <div class="images-slider__rep__action">
+        <a class="images-slider__rep__action__btn" href="{{ url_for('car_edit', id = car.id) }}">Modifier</a>
+        <button class="images-slider__rep__action__btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{car.id}}">Supprimer</button>
+    </div>
+    
+    {% endif %}
+    
+</div>

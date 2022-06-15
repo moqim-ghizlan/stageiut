@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% set current_path = index %}
+
+{% block links %}
+    {{ super() }}
+{% endblock %}
+
+{% block tittre %}
+    My Autolive - admin
+{% endblock %}
+
+{% block header %}
+{% include "sub_templates/main_header_v2.html" %}
+{% endblock %}
+
+
+
+
+{% block main %}
+<div class="add_article">
+    <div class="heddin">
+        <span class="visually-hidden" id="seleceted_marque">{{ data['seleceted_marque'] }}</span>
+        <span class="visually-hidden" id="seleceted_modele">{{ data['seleceted_modele'] }}</span>
+    </div>
+
+    <div class="add_article_top"><h2>Modification d'un annonce</h2></div>
+    <div class="add_article_center">
+        
+        <form method="POST" class="add_article_forme" enctype="multipart/form-data">
+            <div class="add_article_form_left">
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="marque">Choisissez la marque</label>
+                        <select class="add_article_container_form_col_row_marque" id="marque" name="select_marques"></select>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="modele">Choisissez la modele</label>
+                        <select id="modeles" name="select_modeles"></select>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="annee">Année de fabrication</label>
+                        <input type="number" name="annee" id="annee" value={{ car.annee }}>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="Kilometrage">Kilométrage</label>
+                        <input type="number" name="Kilometrage" id="Kilometrage" value={{ car.kilometrage }}>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="puissance">Puissance</label>
+                        <input type="number" name="puissance" id="puissance"  value={{ car.puissance }}>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="puissance_fiscale">Puissance fiscale</label>
+                        <input type="number" name="puissance_fiscale" id="puissance_fiscale"  value={{ car.puissance_fiscale }}>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="nb-portes">Nombre de portes</label>
+                        <select class="add_article_container_form_col_row_select" id="nb-portes" name="select_nbportes">
+                            {% for i in [3, 5, "Autres"] %}
+                                {% if car.nb_portes == i %}
+                                    <option class="add_article_container_form_col_row_select_option option" selected value="{{i}}">{{i}}</option>
+                                {% else %}
+                                    <option class="add_article_container_form_col_row_select_option option" value="{{i}}">{{i}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="nb-places">Nombre de places</label>
+                        <select class="add_article_container_form_col_row_select" id="nb-places" name="select_nbplaces">
+                            {% for i in [2, 3, 4, 5, 7, "autres"] %}
+                                {% if car.nb_places == i %}
+                                    <option class="add_article_container_form_col_row_select_option option" selected value="{{i}}">{{i}}</option>
+                                    {% else %}
+                                    <option class="add_article_container_form_col_row_select_option option" value="{{i}}">{{i}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child">
+                        <label for="carburants">Carburants</label>
+                        <select class="add_article_container_form_col_row_select" id="carburants" name="select_carburants">
+                            {% for i in ["Essence", "Disel", "Hybride", "Electrique", "GPL", "Autre",] %}
+                                {% if car.carburant == i.lower() %}
+                                    <option class="add_article_container_form_col_row_select_option option" selected value="{{i}}">{{i}}</option>
+                                    {% else %}
+                                    <option class="add_article_container_form_col_row_select_option option" value="{{i}}">{{i}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+    
+                    <div class="add_article_form_left_section_child">
+                        <label for="boite-de-vitesse">Boîte de vitesse</label>
+                        <select class="add_article_container_form_col_row_select" id="boite-de-vitesse" name="select_boite-de-vitesse">
+                            {% for i in ["Manuelle", "Automatique"] %}
+                                {% if car.boite_vitesse == i.lower() %}
+                                    <option class="add_article_container_form_col_row_select_option option" selected value="{{i}}">{{i}}</option>
+                                    {% else %}
+                                    <option class="add_article_container_form_col_row_select_option option" value="{{i}}">{{i}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                
+                <div class="add_article_form_left_section">
+                    <div class="add_article_form_left_section_child description">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="10">{{ car.description }}</textarea>
+                    </div>
+                </div>
+
+                <div class="add_article_form_left_section prix">
+                    <div class="add_article_form_left_section_child prix">
+                        <label for="prix">Prix</label>
+                        <input type="number" name="prix" id="prix" name="prix" value={{ car.prix }}>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add_article_form_right">
+                <div class="add_article_form_right_uploadImage">
+                    <label for="imagesToUpload" class="add_article_form_right_uploadImage_label"><i class="bi bi-cloud-upload-fill"></i>
+                        <input type="file" id="imagesToUpload" class="add_article_form_right_uploadImage__images" name="imagesToUpload" multiple value="" onchange="preview()">
+                    </label>
+                </div>
+                <div class="add_article_form_right_nbImages">
+                    <h5 id="addArticleFormRightNbImagesText"></h5>
+                </div>
+                <div class="add_article_form_right_reviewImages" id="imagesPreview">
+                    {% for i in car.images %} 
+                    {% set curCarId = car.id | string() %}
+                    <div>
+                        <img class="add_article_form_right_reviewImages_image" src="{{ i.url }}" alt="{{ i.id }}">
+                        <span class="add_article_form_right_reviewImages_span" data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">&#10005;</span>
+                        <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{i.id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel{{i.id}}">Suppression d'une image</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Etes-vous sûr de vouloir supprimer cette image ?<br>Les images supprimées ne peuvent pas être récupérées.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{{url_for('delete_car_image', car_id=car.id, img_id=i.id)}}"><button type="button" class="btn btn-primary">Supprimer</button></a>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                </div>
+                <div class="add_article_form_action">
+                    <input type="submit" value="Confirmer">
+                    <a href="{{ url_for('index') }}">Annuler</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+    {{ super() }}
+    <script>
+        let selectedMarque = document.getElementById('seleceted_marque').textContent;
+        let selectedModele = document.getElementById('seleceted_modele').textContent;
+        
+    </script>
+    <script src="{{ url_for('static', filename='script/editArticle.js') }}"></script>
+{% endblock %}

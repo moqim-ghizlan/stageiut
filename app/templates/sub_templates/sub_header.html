@@ -1,0 +1,23 @@
+<div class="topnav" id="myTopnav">
+    <a href="{{ url_for('index') }}" class="active">Accueil</a>
+
+    <a href="#recherche" onclick="showHideOptionDeRechercheDiv()">Options de recherche</a>
+
+    <a href="#" onclick="hideShowContactes()">Contactes</a>
+    <a href="#about">Société</a>
+
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+    }
+</script>
+
